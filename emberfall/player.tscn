@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bus1mbxivunt6"]
+
+[ext_resource type="Script" uid="uid://d2h5vt6en4ulu" path="res://player.gd" id="1_4flbx"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_4flbx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-145, 22)
+scale = Vector2(2.633151, 106.89298)
+
+[node name="InventoryLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
