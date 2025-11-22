@@ -33,12 +33,14 @@ func _process(delta):
 		if selected_index < 0:
 			selected_index = inventory.size() - 1
 		update_inventory_ui()
-	
 
 	# Toggle inventory on I 
 	if Input.is_action_just_pressed("toggle_inventory"):
 		inventory_open = not inventory_open
 		update_inventory_ui()
+		
+	if Input.is_action_just_pressed("drop_item"):
+		drop_item()
 
 func add_item(item_name: String) -> void:
 	inventory.append(item_name)
@@ -71,3 +73,21 @@ func use_item():
 	var item = inventory[selected_index]
 	equipped_item = item
 	print("Equipped item: " + equipped_item)
+
+func drop_item():
+	if inventory.size() == 0:
+		print("Inventory is empty!")
+		return
+	
+	var item = inventory[selected_index]
+	inventory.remove_at(selected_index)
+	print(item + " dropped!")
+	
+	if inventory.size() == 0:
+		selected_index = 0
+	elif selected_index >= inventory.size():
+		selected_index = inventory.size() - 1
+		
+	update_inventory_ui()	
+	
+	
